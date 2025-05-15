@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cut1yku3shp01"]
 
-[ext_resource type="Script" uid="uid://b0diuvywnpnoj" path="res://scripts/fruit.gd" id="1_ci37x"]
+[ext_resource type="Script" uid="uid://cmn6hokipky2k" path="res://scripts/fruit.gd" id="1_ci37x"]
 [ext_resource type="AudioStream" uid="uid://du5rao17mk6" path="res://assets/sounds/power_up.wav" id="2_xc6hr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qmn4p"]

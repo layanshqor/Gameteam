@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://rxd8k4fokgia"]
 
-[ext_resource type="Script" uid="uid://b0diuvywnpnoj" path="res://scripts/fruit.gd" id="1_nx02p"]
-[ext_resource type="Texture2D" uid="uid://igqmt0sl7l4q" path="res://assets/sprites/fruit.png" id="1_vlmk5"]
+[ext_resource type="Script" uid="uid://cmn6hokipky2k" path="res://scripts/fruit.gd" id="1_nx02p"]
+[ext_resource type="Texture2D" uid="uid://be4e1u7bvr38g" path="res://assets/sprites/Tiles/caneGreenTop.png" id="2_bub0d"]
 [ext_resource type="AudioStream" uid="uid://du5rao17mk6" path="res://assets/sounds/power_up.wav" id="2_ph2fj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qmn4p"]
-radius = 6.85802
+radius = 8.0
 
 [sub_resource type="Animation" id="Animation_ecxcc"]
 length = 0.001
@@ -139,9 +139,10 @@ collision_mask = 2
 script = ExtResource("1_nx02p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_vlmk5")
+scale = Vector2(0.179348, 0.207143)
+texture = ExtResource("2_bub0d")
 region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
+region_rect = Rect2(0, 0, 69.9637, 70.4075)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_qmn4p")
@@ -152,7 +153,7 @@ bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_3vlnp")
+&"": SubResource("AnimationLibrary_3vlnp")
 }
 autoplay = "idle"
 
