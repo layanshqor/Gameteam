@@ -4,8 +4,7 @@ class_name Player
 enum State { NORMAL, ROLLING }
 
 @onready var death_timer: Timer = $DeathTimer
-@onready var anim: AnimationPlayer = $AnimationPlayer
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audioPlayer: AnimationPlayer = $AudioPlayerController
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var hitbox: CollisionShape2D = $StompArea/CollisionShape2D
@@ -43,24 +42,20 @@ func process_normal(delta: float):
 	else:
 		hitbox.disabled = true
 	
-	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or !coyote_timer.is_stopped()) and !dead:
 		velocity.y = JUMP_VELOCITY
 		audioPlayer.play("jump")
 		coyote_timer.stop()
 
-	# Get the input direction and handle the movement/deceleration.
 	var direction: int = get_direction()
 	
 	if direction and !dead:
 		velocity.x += direction * ACCELERATION * delta
 	else:
-		#velocity.x += move_toward(velocity.x, 0, SPEED)
-		velocity.x = lerp(0.0, velocity.x, pow(2, -25 * delta));
+		velocity.x = lerp(0.0, velocity.x, pow(2, -25 * delta))
 	
 	velocity.x = clamp(velocity.x, -MAX_HORIZONTAL_SPEED, MAX_HORIZONTAL_SPEED)
 	
@@ -78,9 +73,8 @@ func process_normal(delta: float):
 
 func process_roll(_delta: float):
 	rolling = true
-	anim.play("roll")
+	sprite.play("walk")  # لا يوجد أنيميشن roll فنعرض walk مؤقتاً
 	velocity = Vector2(roll_speed * last_direction, 0)
-	
 	move_and_slide()
 
 
@@ -111,16 +105,8 @@ func on_player_hit():
 			
 		elif dead != true:
 			dead = true
-			anim.play("death")
+			sprite.play("idle")  # لا يوجد أنيميشن موت، نعرض idle مؤقتاً
 			death_timer.start()
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "hit":
-		hit = false
-	if anim_name == "roll":
-		rolling = false
-		call_deferred("change_state", State.NORMAL)
 
 
 func _on_timer_timeout() -> void:
@@ -130,22 +116,18 @@ func _on_timer_timeout() -> void:
 func get_animation():
 	var direction = get_direction()
 	
-	if hit == true:
-		anim.play("hit")
-	
-	if is_on_floor() and !dead and !hit:
+	if hit:
+		sprite.play("idle")  # لا يوجد أنيميشن hit، نعرض idle مؤقتاً
+	elif is_on_floor() and !dead:
 		if direction == 0:
-			anim.play("idle")
+			sprite.play("idle")
 		else:
-			anim.play("run")
-	elif !is_on_floor() and !dead and !hit:
-		anim.play("jump")
-	
+			sprite.play("walk")
+	elif !is_on_floor() and !dead:
+		sprite.play("jump")
+
 	if !dead:
-		if direction > 0:
-			sprite.scale.x = 1
-		elif direction < 0:
-			sprite.scale.x = -1
+		sprite.flip_h = direction < 0
 
 
 func on_bounce():

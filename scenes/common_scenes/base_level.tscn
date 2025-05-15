@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://bvtekujq2iee3"]
 
 [ext_resource type="PackedScene" uid="uid://c21da7t5pk60k" path="res://scenes/zones/killzone.tscn" id="1_28sov"]
-[ext_resource type="Script" uid="uid://ch366s0x4dkxk" path="res://scripts/game_manager.gd" id="1_m2fh3"]
+[ext_resource type="Script" uid="uid://dvvaqnju5rlc4" path="res://scripts/game_manager.gd" id="1_m2fh3"]
 [ext_resource type="PackedScene" uid="uid://v2mrtvkw8ykj" path="res://scenes/characters/player.tscn" id="1_yc60u"]
 [ext_resource type="PackedScene" uid="uid://q02d1kgrakft" path="res://scenes/zones/win_zone.tscn" id="2_cqxxa"]
 [ext_resource type="PackedScene" uid="uid://c04on5wnsg2k1" path="res://scenes/level_componenets/camera.tscn" id="2_ilett"]

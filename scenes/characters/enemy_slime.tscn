@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://d0kou7ljd58sr"]
 
 [ext_resource type="Texture2D" uid="uid://pp07r37ylfh8" path="res://assets/sprites/slime_green.png" id="1_a5pfs"]
-[ext_resource type="Script" uid="uid://dfk6oi0pfkjk3" path="res://scripts/enemy_slime.gd" id="1_fbl2w"]
+[ext_resource type="Script" uid="uid://bn6bryc17xd27" path="res://scripts/enemy_slime.gd" id="1_fbl2w"]
 [ext_resource type="AudioStream" uid="uid://bo5l3kn6tlegs" path="res://assets/sounds/explosion.wav" id="3_vcmbd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mylyo"]
