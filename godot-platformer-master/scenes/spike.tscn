@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://5pam5op56b0g"]
+
+[ext_resource type="Script" uid="uid://t3oon6m005yx" path="res://spike.gd" id="1_7a7y0"]
+[ext_resource type="Texture2D" uid="uid://bxoq2knfqg16e" path="res://assets/sprites/Tiles/spikesBottom.png" id="2_d2mqm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cx2lw"]
+size = Vector2(40.625, 15.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_60m7a"]
+size = Vector2(40.75, 15.25)
+
+[node name="Spike" type="StaticBody2D"]
+script = ExtResource("1_7a7y0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, -1.43051e-06)
+scale = Vector2(0.557143, 0.435714)
+texture = ExtResource("2_d2mqm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.3125, 7.3125)
+shape = SubResource("RectangleShape2D_cx2lw")
+
+[node name="DamageArea" type="Area2D" parent="."]
+position = Vector2(9, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(-8.625, 11.375)
+shape = SubResource("RectangleShape2D_60m7a")
